@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Café Aroma</title>
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+
+            <a class="navbar-brand" href="#inicio">
+                ☕ Café Aroma
+            </a>
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#menuNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menuNav">
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menú</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#promociones">Promociones</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- ================= INICIO ================= -->
+    <section id="inicio">
+
+        <div class="container mt-5 mb-5">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-6 mb-4">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085"
+                         class="img-fluid rounded"
+                         alt="Cafetería">
+                </div>
+
+                <div class="col-lg-6 text-center">
+
+                    <h1 class="display-4">Café Aroma</h1>
+
+                    <p class="lead">
+                        El mejor café para comenzar tu día.
+                        Disfruta bebidas y postres preparados
+                        con ingredientes de calidad.
+                    </p>
+
+                    <a href="#menu" class="btn btn-primary">
+                        Ver nuestro menú
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MENÚ ================= -->
+    <section id="menu">
+
+        <div class="container mt-5 mb-5">
+
+            <h2 class="text-center mb-4">
+                Nuestro menú
+            </h2>
+
+            <div class="row">
+
+
+                <!-- Café Americano -->
+                <div class="col-md-6 col-lg-4 mb-4">
+
+                    <div class="card h-100">
+
+                        <img src="https://images.unsplash.com/photo-1497515114629-f71d768fd07c"
+                             class="card-img-top"
+                             alt="Café americano">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                ☕ Café americano
+                            </h5>
+
+                            <p class="card-text">
+                                Café preparado con granos seleccionados
+                                y un sabor intenso.
+                            </p>
+
+                            <p>
+                                <span class="badge badge-primary">
+                                    $45
+                                </span>
+                            </p>
+
+                            <button class="btn btn-primary"
+                                    onclick="abrirPedido('Café americano', 45)">
+                                Ordenar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Cappuccino -->
+                <div class="col-md-6 col-lg-4 mb-4">
+
+                    <div class="card h-100">
+
+                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d"
+                             class="card-img-top"
+                             alt="Cappuccino">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                ☕ Cappuccino
+                            </h5>
+
+                            <p class="card-text">
+                                Espresso acompañado de leche
+                                vaporizada y espuma cremosa.
+                            </p>
+
+                            <p>
+                                <span class="badge badge-primary">
+                                    $55
+                                </span>
+                            </p>
+
+                            <button class="btn btn-primary"
+                                    onclick="abrirPedido('Cappuccino', 55)">
+                                Ordenar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Latte -->
+                <div class="col-md-6 col-lg-4 mb-4">
+
+                    <div class="card h-100">
+
+                        <img src="https://images.unsplash.com/photo-1561882468-9110e03e0f78"
+                             class="card-img-top"
+                             alt="Latte">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                ☕ Latte
+                            </h5>
+
+                            <p class="card-text">
+                                Suave combinación de espresso
+                                y leche caliente.
+                            </p>
+
+                            <p>
+                                <span class="badge badge-primary">
+                                    $60
+                                </span>
+                            </p>
+
+                            <button class="btn btn-primary"
+                                    onclick="abrirPedido('Latte', 60)">
+                                Ordenar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Croissant -->
+                <div class="col-md-6 col-lg-4 mb-4">
+
+                    <div class="card h-100">
+
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a"
+                             class="card-img-top"
+                             alt="Croissant">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                🥐 Croissant
+                            </h5>
+
+                            <p class="card-text">
+                                Croissant recién horneado,
+                                crujiente y delicioso.
+                            </p>
+
+                            <p>
+                                <span class="badge badge-primary">
+                                    $40
+                                </span>
+                            </p>
+
+                            <button class="btn btn-primary"
+                                    onclick="abrirPedido('Croissant', 40)">
+                                Ordenar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Pastel -->
+                <div class="col-md-6 col-lg-4 mb-4">
+
+                    <div class="card h-100">
+
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587"
+                             class="card-img-top"
+                             alt="Pastel de chocolate">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                🍰 Pastel de chocolate
+                            </h5>
+
+                            <p class="card-text">
+                                Pastel de chocolate con
+                                cobertura cremosa.
+                            </p>
+
+                            <p>
+                                <span class="badge badge-primary">
+                                    $65
+                                </span>
+                            </p>
+
+                            <button class="btn btn-primary"
+                                    onclick="abrirPedido('Pastel de chocolate', 65)">
+                                Ordenar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Galletas -->
+                <div class="col-md-6 col-lg-4 mb-4">
+
+                    <div class="card h-100">
+
+                        <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e"
+                             class="card-img-top"
+                             alt="Galletas">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                🍪 Galletas
+                            </h5>
+
+                            <p class="card-text">
+                                Galletas caseras con chispas
+                                de chocolate.
+                            </p>
+
+                            <p>
+                                <span class="badge badge-primary">
+                                    $35
+                                </span>
+                            </p>
+
+                            <button class="btn btn-primary"
+                                    onclick="abrirPedido('Galletas', 35)">
+                                Ordenar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MODAL DE PEDIDO ================= -->
+    <div class="modal fade" id="modalPedido" tabindex="-1" role="dialog" aria-labelledby="modalPedidoLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalPedidoLabel">☕ Realizar pedido</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="alert alert-primary">
+                        Producto seleccionado:
+                        <strong id="productoSeleccionado"></strong>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cantidad">Cantidad</label>
+                        <input type="number" class="form-control" id="cantidad" value="1" min="1" onchange="calcularTotal()">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombrePedido">Nombre</label>
+                        <input type="text" class="form-control" id="nombrePedido" placeholder="Tu nombre">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefonoPedido">Teléfono</label>
+                        <input type="tel" class="form-control" id="telefonoPedido" placeholder="Tu teléfono">
+                    </div>
+
+                    <div class="alert alert-success text-center">
+                        Total:
+                        <strong id="totalPedido">$0</strong>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="confirmarPedido()">Confirmar pedido</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= PROMOCIONES ================= -->
+    <section id="promociones">
+
+        <div class="container mt-5 mb-5">
+
+            <h2 class="text-center mb-4">
+                Promociones
+            </h2>
+
+            <div class="row">
+
+                <div class="col-md-4 mb-3">
+
+                    <div class="alert alert-primary text-center">
+
+                        <h5>Promoción 1</h5>
+
+                        <p>
+                            Café americano + galleta.
+                        </p>
+
+                        <span class="badge badge-success">
+                            Oferta
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4 mb-3">
+
+                    <div class="card text-center">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                Promoción 2
+                            </h5>
+
+                            <p class="card-text">
+                                Cappuccino + croissant.
+                            </p>
+
+                            <span class="badge badge-warning">
+                                2x1
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4 mb-3">
+
+                    <div class="alert alert-success text-center">
+
+                        <h5>Promoción 3</h5>
+
+                        <p>
+                            10% de descuento en pasteles.
+                        </p>
+
+                        <span class="badge badge-danger">
+                            Especial
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACTO ================= -->
+    <section id="contacto">
+
+        <div class="container mt-5 mb-5">
+
+            <h2 class="text-center mb-4">
+                Contáctanos
+            </h2>
+
+            <div class="row justify-content-center">
+
+                <div class="col-md-10 col-lg-8">
+
+                    <form>
+
+                        <div class="form-group">
+                            <label for="nombre">
+                                Nombre
+                            </label>
+
+                            <input type="text"
+                                   class="form-control"
+                                   id="nombre"
+                                   placeholder="Escribe tu nombre">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="correo">
+                                Correo electrónico
+                            </label>
+
+                            <input type="email"
+                                   class="form-control"
+                                   id="correo"
+                                   placeholder="correo@ejemplo.com">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="telefono">
+                                Teléfono
+                            </label>
+
+                            <input type="tel"
+                                   class="form-control"
+                                   id="telefono"
+                                   placeholder="Tu teléfono">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="motivo">
+                                Motivo de contacto
+                            </label>
+
+                            <select class="form-control" id="motivo">
+
+                                <option>Consulta</option>
+                                <option>Queja</option>
+                                <option>Sugerencia</option>
+                                <option>Reservación</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="mensaje">
+                                Mensaje
+                            </label>
+
+                            <textarea class="form-control"
+                                      id="mensaje"
+                                      rows="5"
+                                      placeholder="Escribe tu mensaje"></textarea>
+
+                        </div>
+
+
+                        <button type="submit"
+                                class="btn btn-primary btn-block">
+                            Enviar
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-dark text-white text-center p-4">
+
+        <div class="container">
+
+            <h5>Café Aroma ☕</h5>
+
+            <p class="mb-1">
+                📍 Calle Principal #123, Navojoa, Sonora
+            </p>
+
+            <p class="mb-1">
+                📞 642-123-4567
+            </p>
+
+            <p class="mb-1">
+                Instagram | Facebook | TikTok
+            </p>
+
+            <p class="mt-3 mb-0">
+                © 2026 Café Aroma. Todos los derechos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+        let productoActual = "";
+        let precioActual = 0;
+
+        function abrirPedido(producto, precio) {
+            productoActual = producto;
+            precioActual = precio;
+
+            document.getElementById("productoSeleccionado").textContent = producto;
+            document.getElementById("cantidad").value = 1;
+
+            calcularTotal();
+            $("#modalPedido").modal("show");
+        }
+
+        function calcularTotal() {
+            let cantidad = parseInt(document.getElementById("cantidad").value);
+
+            if (cantidad < 1 || isNaN(cantidad)) {
+                cantidad = 1;
+                document.getElementById("cantidad").value = 1;
+            }
+
+            let total = precioActual * cantidad;
+            document.getElementById("totalPedido").textContent = "$" + total;
+        }
+
+        function confirmarPedido() {
+            let nombre = document.getElementById("nombrePedido").value.trim();
+            let telefono = document.getElementById("telefonoPedido").value.trim();
+            let cantidad = document.getElementById("cantidad").value;
+
+            if (nombre === "" || telefono === "") {
+                alert("Por favor, completa tu nombre y teléfono.");
+                return;
+            }
+
+            let total = precioActual * cantidad;
+
+            alert(
+                "¡Pedido realizado correctamente! ☕\n\n" +
+                "Cliente: " + nombre + "\n" +
+                "Producto: " + productoActual + "\n" +
+                "Cantidad: " + cantidad + "\n" +
+                "Total: $" + total + "\n\n" +
+                "Nos comunicaremos contigo al teléfono: " + telefono
+            );
+
+            $("#modalPedido").modal("hide");
+            document.getElementById("nombrePedido").value = "";
+            document.getElementById("telefonoPedido").value = "";
+        }
+    </script>
+
+    <!-- Bootstrap 4 JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
