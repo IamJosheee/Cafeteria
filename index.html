@@ -3,22 +3,412 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Café Aroma</title>
 
     <!-- Bootstrap 4 -->
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #0d0a12;
+            --bg-card: #16111f;
+            --bg-elev: #1e1729;
+            --purple-deep: #2d1b4e;
+            --purple: #6d3fc4;
+            --purple-light: #a77bff;
+            --text: #e8e3f0;
+            --text-muted: #9a8fb0;
+            --border: #2a2038;
+        }
+
+        * { -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.5px;
+        }
+
+        /* ============ NAVBAR ============ */
+        .navbar {
+            background-color: rgba(13, 10, 18, 0.92) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Fraunces', serif;
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: var(--text) !important;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-brand span {
+            color: var(--purple-light);
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-muted) !important;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem !important;
+            transition: color 0.25s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--purple-light) !important;
+        }
+
+        .navbar-toggler {
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.6rem;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23a77bff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* ============ HERO ============ */
+        #inicio {
+            padding: 4rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #inicio::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(109, 63, 196, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        #inicio img {
+            border-radius: 16px;
+            filter: brightness(0.85) contrast(1.05) saturate(0.9);
+            box-shadow: 0 20px 60px rgba(109, 63, 196, 0.25);
+            border: 1px solid var(--border);
+        }
+
+        #inicio h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a77bff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        #inicio .lead {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 300;
+            line-height: 1.7;
+            max-width: 420px;
+            margin: 0 auto 2rem;
+        }
+
+        /* ============ BOTONES ============ */
+        .btn-primary {
+            background-color: var(--purple);
+            border: none;
+            color: #fff;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding: 0.7rem 1.8rem;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 20px rgba(109, 63, 196, 0.35);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: var(--purple-light);
+            color: #0d0a12;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(167, 123, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--bg-elev);
+            border-color: var(--purple);
+            color: var(--text);
+        }
+
+        /* ============ SECCIONES ============ */
+        section h2 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--purple);
+            margin: 0.8rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* ============ TARJETAS ============ */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--purple);
+            box-shadow: 0 20px 40px rgba(109, 63, 196, 0.2);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            filter: brightness(0.8) saturate(0.85);
+            transition: filter 0.3s ease;
+        }
+
+        .card:hover .card-img-top {
+            filter: brightness(0.95) saturate(1);
+        }
+
+        .card-body {
+            padding: 1.4rem;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+        }
+
+        .card-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .badge-primary {
+            background-color: var(--purple-deep) !important;
+            color: var(--purple-light) !important;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.45rem 0.9rem;
+            border-radius: 6px;
+            border: 1px solid rgba(167, 123, 255, 0.3);
+        }
+
+        .badge-success, .badge-warning, .badge-danger {
+            background-color: var(--purple-deep) !important;
+            color: var(--purple-light) !important;
+            border: 1px solid rgba(167, 123, 255, 0.3);
+            font-weight: 500;
+        }
+
+        /* ============ PROMOCIONES ============ */
+        .alert {
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            background-color: var(--bg-card);
+            color: var(--text);
+            padding: 1.8rem 1.2rem;
+        }
+
+        .alert-primary {
+            background-color: var(--bg-card) !important;
+            border-color: var(--border) !important;
+            color: var(--text) !important;
+        }
+
+        .alert-success {
+            background-color: var(--bg-card) !important;
+            border-color: var(--border) !important;
+            color: var(--text) !important;
+        }
+
+        .alert h5 {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .alert p {
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        /* ============ MODAL ============ */
+        .modal-content {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            color: var(--text);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--border);
+            padding: 1.3rem 1.5rem;
+        }
+
+        .modal-title {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-footer {
+            border-top: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+        }
+
+        .close {
+            color: var(--text-muted);
+            opacity: 0.8;
+            text-shadow: none;
+        }
+
+        .close:hover {
+            color: var(--purple-light);
+        }
+
+        .form-control {
+            background-color: var(--bg-elev);
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 8px;
+            padding: 0.65rem 1rem;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-control:focus {
+            background-color: var(--bg-elev);
+            border-color: var(--purple);
+            color: var(--text);
+            box-shadow: 0 0 0 3px rgba(109, 63, 196, 0.2);
+        }
+
+        .form-control::placeholder {
+            color: #5a5070;
+        }
+
+        .form-group label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        select.form-control option {
+            background-color: var(--bg-elev);
+            color: var(--text);
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            background-color: #08060c !important;
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 0 2rem !important;
+        }
+
+        footer h5 {
+            font-family: 'Fraunces', serif;
+            font-weight: 900;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        footer .social {
+            color: var(--purple-light);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* ============ UTILIDADES ============ */
+        .section-spacer {
+            padding: 4rem 0;
+        }
+
+        .divider-accent {
+            width: 40px;
+            height: 2px;
+            background: var(--purple);
+            margin: 0 auto 2rem;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            #inicio h1 { font-size: 2.8rem; }
+            section h2 { font-size: 1.9rem; }
+            #inicio { padding: 2rem 0; }
+            .navbar-brand { font-size: 1.2rem; }
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- ================= NAVBAR ================= -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
 
             <a class="navbar-brand" href="#inicio">
-                ☕ Café Aroma
+                Café <span>Aroma</span>
             </a>
 
             <button class="navbar-toggler"
@@ -55,301 +445,193 @@
 
 
     <!-- ================= INICIO ================= -->
-    <section id="inicio">
-
-        <div class="container mt-5 mb-5">
-
+    <section id="inicio" style="padding-top: 7rem;">
+        <div class="container">
             <div class="row align-items-center">
 
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-6 mb-4 order-lg-2">
                     <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085"
-                         class="img-fluid rounded"
+                         class="img-fluid"
                          alt="Cafetería">
                 </div>
 
-                <div class="col-lg-6 text-center">
-
-                    <h1 class="display-4">Café Aroma</h1>
-
-                    <p class="lead">
+                <div class="col-lg-6 text-center text-lg-left order-lg-1">
+                    <h1>Café Aroma</h1>
+                    <p class="lead" style="margin-left: 0;">
                         El mejor café para comenzar tu día.
                         Disfruta bebidas y postres preparados
                         con ingredientes de calidad.
                     </p>
-
                     <a href="#menu" class="btn btn-primary">
                         Ver nuestro menú
                     </a>
-
                 </div>
 
             </div>
-
         </div>
-
     </section>
 
 
     <!-- ================= MENÚ ================= -->
-    <section id="menu">
+    <section id="menu" class="section-spacer">
+        <div class="container">
 
-        <div class="container mt-5 mb-5">
-
-            <h2 class="text-center mb-4">
-                Nuestro menú
-            </h2>
+            <h2>Nuestro menú</h2>
+            <div class="divider-accent"></div>
 
             <div class="row">
 
 
                 <!-- Café Americano -->
                 <div class="col-md-6 col-lg-4 mb-4">
-
-                    <div class="card h-100">
-
+                    <div class="card">
                         <img src="https://images.unsplash.com/photo-1497515114629-f71d768fd07c"
                              class="card-img-top"
                              alt="Café americano">
-
                         <div class="card-body">
-
-                            <h5 class="card-title">
-                                ☕ Café americano
-                            </h5>
-
+                            <h5 class="card-title">Café americano</h5>
                             <p class="card-text">
                                 Café preparado con granos seleccionados
                                 y un sabor intenso.
                             </p>
-
-                            <p>
-                                <span class="badge badge-primary">
-                                    $45
-                                </span>
-                            </p>
-
-                            <button class="btn btn-primary"
+                            <p><span class="badge badge-primary">$45</span></p>
+                            <button class="btn btn-primary btn-block"
                                     onclick="abrirPedido('Café americano', 45)">
                                 Ordenar
                             </button>
-
                         </div>
-
                     </div>
-
                 </div>
 
 
                 <!-- Cappuccino -->
                 <div class="col-md-6 col-lg-4 mb-4">
-
-                    <div class="card h-100">
-
+                    <div class="card">
                         <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d"
                              class="card-img-top"
                              alt="Cappuccino">
-
                         <div class="card-body">
-
-                            <h5 class="card-title">
-                                ☕ Cappuccino
-                            </h5>
-
+                            <h5 class="card-title">Cappuccino</h5>
                             <p class="card-text">
                                 Espresso acompañado de leche
                                 vaporizada y espuma cremosa.
                             </p>
-
-                            <p>
-                                <span class="badge badge-primary">
-                                    $55
-                                </span>
-                            </p>
-
-                            <button class="btn btn-primary"
+                            <p><span class="badge badge-primary">$55</span></p>
+                            <button class="btn btn-primary btn-block"
                                     onclick="abrirPedido('Cappuccino', 55)">
                                 Ordenar
                             </button>
-
                         </div>
-
                     </div>
-
                 </div>
 
 
                 <!-- Latte -->
                 <div class="col-md-6 col-lg-4 mb-4">
-
-                    <div class="card h-100">
-
+                    <div class="card">
                         <img src="https://images.unsplash.com/photo-1561882468-9110e03e0f78"
                              class="card-img-top"
                              alt="Latte">
-
                         <div class="card-body">
-
-                            <h5 class="card-title">
-                                ☕ Latte
-                            </h5>
-
+                            <h5 class="card-title">Latte</h5>
                             <p class="card-text">
                                 Suave combinación de espresso
                                 y leche caliente.
                             </p>
-
-                            <p>
-                                <span class="badge badge-primary">
-                                    $60
-                                </span>
-                            </p>
-
-                            <button class="btn btn-primary"
+                            <p><span class="badge badge-primary">$60</span></p>
+                            <button class="btn btn-primary btn-block"
                                     onclick="abrirPedido('Latte', 60)">
                                 Ordenar
                             </button>
-
                         </div>
-
                     </div>
-
                 </div>
 
 
                 <!-- Croissant -->
                 <div class="col-md-6 col-lg-4 mb-4">
-
-                    <div class="card h-100">
-
+                    <div class="card">
                         <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a"
                              class="card-img-top"
                              alt="Croissant">
-
                         <div class="card-body">
-
-                            <h5 class="card-title">
-                                🥐 Croissant
-                            </h5>
-
+                            <h5 class="card-title">Croissant</h5>
                             <p class="card-text">
                                 Croissant recién horneado,
                                 crujiente y delicioso.
                             </p>
-
-                            <p>
-                                <span class="badge badge-primary">
-                                    $40
-                                </span>
-                            </p>
-
-                            <button class="btn btn-primary"
+                            <p><span class="badge badge-primary">$40</span></p>
+                            <button class="btn btn-primary btn-block"
                                     onclick="abrirPedido('Croissant', 40)">
                                 Ordenar
                             </button>
-
                         </div>
-
                     </div>
-
                 </div>
 
 
                 <!-- Pastel -->
                 <div class="col-md-6 col-lg-4 mb-4">
-
-                    <div class="card h-100">
-
+                    <div class="card">
                         <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587"
                              class="card-img-top"
                              alt="Pastel de chocolate">
-
                         <div class="card-body">
-
-                            <h5 class="card-title">
-                                🍰 Pastel de chocolate
-                            </h5>
-
+                            <h5 class="card-title">Pastel de chocolate</h5>
                             <p class="card-text">
                                 Pastel de chocolate con
                                 cobertura cremosa.
                             </p>
-
-                            <p>
-                                <span class="badge badge-primary">
-                                    $65
-                                </span>
-                            </p>
-
-                            <button class="btn btn-primary"
+                            <p><span class="badge badge-primary">$65</span></p>
+                            <button class="btn btn-primary btn-block"
                                     onclick="abrirPedido('Pastel de chocolate', 65)">
                                 Ordenar
                             </button>
-
                         </div>
-
                     </div>
-
                 </div>
 
 
                 <!-- Galletas -->
                 <div class="col-md-6 col-lg-4 mb-4">
-
-                    <div class="card h-100">
-
+                    <div class="card">
                         <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e"
                              class="card-img-top"
                              alt="Galletas">
-
                         <div class="card-body">
-
-                            <h5 class="card-title">
-                                🍪 Galletas
-                            </h5>
-
+                            <h5 class="card-title">Galletas</h5>
                             <p class="card-text">
                                 Galletas caseras con chispas
                                 de chocolate.
                             </p>
-
-                            <p>
-                                <span class="badge badge-primary">
-                                    $35
-                                </span>
-                            </p>
-
-                            <button class="btn btn-primary"
+                            <p><span class="badge badge-primary">$35</span></p>
+                            <button class="btn btn-primary btn-block"
                                     onclick="abrirPedido('Galletas', 35)">
                                 Ordenar
                             </button>
-
                         </div>
-
                     </div>
-
                 </div>
 
             </div>
-
         </div>
-
     </section>
 
 
     <!-- ================= MODAL DE PEDIDO ================= -->
     <div class="modal fade" id="modalPedido" tabindex="-1" role="dialog" aria-labelledby="modalPedidoLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalPedidoLabel">☕ Realizar pedido</h5>
+                    <h5 class="modal-title" id="modalPedidoLabel">Realizar pedido</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
                 <div class="modal-body">
-                    <div class="alert alert-primary">
+                    <div class="alert alert-primary mb-3">
                         Producto seleccionado:
                         <strong id="productoSeleccionado"></strong>
                     </div>
@@ -369,7 +651,7 @@
                         <input type="tel" class="form-control" id="telefonoPedido" placeholder="Tu teléfono">
                     </div>
 
-                    <div class="alert alert-success text-center">
+                    <div class="alert alert-success text-center mb-0">
                         Total:
                         <strong id="totalPedido">$0</strong>
                     </div>
@@ -386,208 +668,116 @@
 
 
     <!-- ================= PROMOCIONES ================= -->
-    <section id="promociones">
+    <section id="promociones" class="section-spacer">
+        <div class="container">
 
-        <div class="container mt-5 mb-5">
-
-            <h2 class="text-center mb-4">
-                Promociones
-            </h2>
+            <h2>Promociones</h2>
+            <div class="divider-accent"></div>
 
             <div class="row">
 
                 <div class="col-md-4 mb-3">
-
-                    <div class="alert alert-primary text-center">
-
+                    <div class="alert alert-primary text-center mb-0">
                         <h5>Promoción 1</h5>
-
-                        <p>
-                            Café americano + galleta.
-                        </p>
-
-                        <span class="badge badge-success">
-                            Oferta
-                        </span>
-
+                        <p>Café americano + galleta.</p>
+                        <span class="badge badge-success">Oferta</span>
                     </div>
-
                 </div>
 
 
                 <div class="col-md-4 mb-3">
-
                     <div class="card text-center">
-
                         <div class="card-body">
-
-                            <h5 class="card-title">
-                                Promoción 2
-                            </h5>
-
-                            <p class="card-text">
-                                Cappuccino + croissant.
-                            </p>
-
-                            <span class="badge badge-warning">
-                                2x1
-                            </span>
-
+                            <h5 class="card-title">Promoción 2</h5>
+                            <p class="card-text">Cappuccino + croissant.</p>
+                            <span class="badge badge-warning">2x1</span>
                         </div>
-
                     </div>
-
                 </div>
 
 
                 <div class="col-md-4 mb-3">
-
-                    <div class="alert alert-success text-center">
-
+                    <div class="alert alert-success text-center mb-0">
                         <h5>Promoción 3</h5>
-
-                        <p>
-                            10% de descuento en pasteles.
-                        </p>
-
-                        <span class="badge badge-danger">
-                            Especial
-                        </span>
-
+                        <p>10% de descuento en pasteles.</p>
+                        <span class="badge badge-danger">Especial</span>
                     </div>
-
                 </div>
 
             </div>
-
         </div>
-
     </section>
 
 
     <!-- ================= CONTACTO ================= -->
-    <section id="contacto">
+    <section id="contacto" class="section-spacer">
+        <div class="container">
 
-        <div class="container mt-5 mb-5">
-
-            <h2 class="text-center mb-4">
-                Contáctanos
-            </h2>
+            <h2>Contáctanos</h2>
+            <div class="divider-accent"></div>
 
             <div class="row justify-content-center">
-
                 <div class="col-md-10 col-lg-8">
 
                     <form>
 
                         <div class="form-group">
-                            <label for="nombre">
-                                Nombre
-                            </label>
-
-                            <input type="text"
-                                   class="form-control"
-                                   id="nombre"
-                                   placeholder="Escribe tu nombre">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Escribe tu nombre">
                         </div>
 
-
                         <div class="form-group">
-                            <label for="correo">
-                                Correo electrónico
-                            </label>
-
-                            <input type="email"
-                                   class="form-control"
-                                   id="correo"
-                                   placeholder="correo@ejemplo.com">
+                            <label for="correo">Correo electrónico</label>
+                            <input type="email" class="form-control" id="correo" placeholder="correo@ejemplo.com">
                         </div>
 
-
                         <div class="form-group">
-                            <label for="telefono">
-                                Teléfono
-                            </label>
-
-                            <input type="tel"
-                                   class="form-control"
-                                   id="telefono"
-                                   placeholder="Tu teléfono">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefono" placeholder="Tu teléfono">
                         </div>
 
-
                         <div class="form-group">
-                            <label for="motivo">
-                                Motivo de contacto
-                            </label>
-
+                            <label for="motivo">Motivo de contacto</label>
                             <select class="form-control" id="motivo">
-
                                 <option>Consulta</option>
                                 <option>Queja</option>
                                 <option>Sugerencia</option>
                                 <option>Reservación</option>
-
                             </select>
-
                         </div>
-
 
                         <div class="form-group">
-
-                            <label for="mensaje">
-                                Mensaje
-                            </label>
-
-                            <textarea class="form-control"
-                                      id="mensaje"
-                                      rows="5"
-                                      placeholder="Escribe tu mensaje"></textarea>
-
+                            <label for="mensaje">Mensaje</label>
+                            <textarea class="form-control" id="mensaje" rows="5" placeholder="Escribe tu mensaje"></textarea>
                         </div>
 
-
-                        <button type="submit"
-                                class="btn btn-primary btn-block">
+                        <button type="submit" class="btn btn-primary btn-block">
                             Enviar
                         </button>
 
                     </form>
 
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
 
     <!-- ================= FOOTER ================= -->
-    <footer class="bg-dark text-white text-center p-4">
-
+    <footer class="text-center">
         <div class="container">
 
-            <h5>Café Aroma ☕</h5>
+            <h5>Café <span style="color: var(--purple-light);">Aroma</span></h5>
 
-            <p class="mb-1">
-                📍 Calle Principal #123, Navojoa, Sonora
-            </p>
+            <p class="mb-1">Calle Principal #123, Navojoa, Sonora</p>
+            <p class="mb-1">642-123-4567</p>
+            <p class="mb-1 social">Instagram · Facebook · TikTok</p>
 
-            <p class="mb-1">
-                📞 642-123-4567
-            </p>
-
-            <p class="mb-1">
-                Instagram | Facebook | TikTok
-            </p>
-
-            <p class="mt-3 mb-0">
+            <p class="mt-3 mb-0" style="font-size: 0.8rem;">
                 © 2026 Café Aroma. Todos los derechos reservados.
             </p>
 
         </div>
-
     </footer>
 
 
@@ -631,7 +821,7 @@
             let total = precioActual * cantidad;
 
             alert(
-                "¡Pedido realizado correctamente! ☕\n\n" +
+                "¡Pedido realizado correctamente!\n\n" +
                 "Cliente: " + nombre + "\n" +
                 "Producto: " + productoActual + "\n" +
                 "Cantidad: " + cantidad + "\n" +
@@ -647,9 +837,7 @@
 
     <!-- Bootstrap 4 JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
